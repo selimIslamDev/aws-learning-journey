@@ -28,3 +28,37 @@
 **বাংলা:** ধরো একটা powerful computer আছে। Virtualization মানে সেই একটা computer কে ভাগ করে ১০টা আলাদা computer এর মতো বানানো। AWS এই কাজটাই করে — একটা বড় server কে অনেক ছোট ছোট virtual server এ ভাগ করে আমাদের দেয়।
 
 **English:** Virtualization is the technology that splits one physical server into multiple virtual machines (VMs). This is the foundation of cloud computing — AWS uses this to give you your own "virtual computer" without owning physical hardware.
+
+
+## Public Cloud vs Private Cloud
+
+### Public Cloud 🌐
+
+**বাংলা:** Public cloud হলো এমন একটা system যেখানে AWS, Google, Microsoft এর মতো বড় company তাদের নিজেদের server বানায় এবং সেটা সবার কাছে ভাড়ায় দেয়। মানে তুমি, আমি, যেকোনো company — সবাই একই server share করে use করি। যেমন তুমি যদি Gmail use করো — এইটা Google এর public cloud।
+
+**English:** Public cloud is a computing service offered by third-party providers (like AWS, Azure, Google Cloud) over the internet. The infrastructure is shared among multiple users/organizations. Anyone can rent it and pay only for what they use.
+
+**উদাহরণ:** Netflix, Uber, Airbnb — সবাই AWS এর public cloud use করে।
+
+---
+
+### Private Cloud 🔒
+
+**বাংলা:** Private cloud হলো শুধুমাত্র একটা নির্দিষ্ট company বা organization এর জন্য আলাদা করে বানানো cloud। অন্য কেউ এটা share করতে পারে না। এইটা অনেক বেশি secure কিন্তু নিজেদেরই maintain করতে হয় এবং খরচ অনেক বেশি।
+
+**English:** Private cloud is a dedicated cloud environment built exclusively for one organization. No one else can access or share it. It offers more control and security but requires more investment and maintenance.
+
+**উদাহরণ:** Bangladesh Bank, সরকারি প্রতিষ্ঠান, বড় hospital — এরা private cloud use করে কারণ তাদের data অনেক sensitive।
+
+---
+
+
+
+### সহজে মনে রাখো 💡
+
+| | Public Cloud | Private Cloud |
+|--|--|--|
+| কে use করে | সবাই | শুধু একটা company |
+| খরচ | কম | বেশি |
+| Security | ভালো | অনেক বেশি |
+| উদাহরণ | AWS, Google | Bank, Government |
