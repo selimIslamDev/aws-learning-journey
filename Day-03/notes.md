@@ -1,0 +1,137 @@
+# Day 03 - Amazon EC2 Complete Guide
+
+## Date: 08 April 2026
+
+---
+
+## 1. What is EC2?
+
+**বাংলা:** EC2 মানে Elastic Compute Cloud। সহজ কথায় এইটা হলো AWS এর virtual computer। তোমার নিজের computer এ যেমন RAM, CPU, Storage আছে — EC2 তেও একই জিনিস আছে, কিন্তু এইটা internet এ AWS এর data center এ আছে। তুমি ভাড়ায় use করবে।
+
+**English:** EC2 (Elastic Compute Cloud) is a virtual server in the cloud. Instead of buying a physical computer, you rent a virtual machine from AWS and use it over the internet.
+
+**Real life:** তোমার একটা website চালাতে হবে — নিজে server কিনলে লক্ষ টাকা লাগবে। AWS EC2 তে মাসে কয়েকশো টাকায় একটা server পাবে।
+
+---
+
+## 2. What is AMI?
+
+**বাংলা:** AMI মানে Amazon Machine Image। এইটা হলো একটা ready-made template — যেখানে operating system আর software আগে থেকেই install করা আছে। তুমি শুধু এই template দিয়ে server চালু করবে।
+
+**English:** AMI (Amazon Machine Image) is a pre-configured template that contains the operating system and software needed to launch an EC2 instance. It's like a blueprint for your server.
+
+**Real life:** নতুন computer কিনলে Windows install করতে হয় — AMI হলো সেই Windows এর CD, যেটা দিয়ে server চালু হয়।
+
+| AMI Type | কাজ |
+|----------|-----|
+| Ubuntu AMI | Linux server |
+| Windows AMI | Windows server |
+| Amazon Linux AMI | AWS এর নিজস্ব Linux |
+
+---
+
+## 3. What is Instance Type?
+
+**বাংলা:** Instance Type মানে হলো তোমার server কতটা powerful হবে সেটা। যেমন একটা ছোট website চালাতে কম power লাগবে, কিন্তু Netflix এর মতো বড় সাইট চালাতে অনেক বেশি power লাগবে। Instance Type দিয়ে তুমি ঠিক করো কতটুকু CPU আর RAM নেবে।
+
+**English:** Instance Type defines the hardware configuration of your EC2 instance — how much CPU, RAM, and network capacity it has. Different types are optimized for different use cases.
+
+| Instance Type | কাজ |
+|--------------|-----|
+| t2.micro | ছোট project, free tier |
+| t3.medium | মাঝারি website |
+| c5.large | বেশি processing দরকার |
+| r5.large | বেশি RAM দরকার |
+
+---
+
+## 4. What is Key Pair?
+
+**বাংলা:** Key Pair হলো তোমার server এ login করার চাবি। দুইটা জিনিস থাকে — Public Key (AWS রাখে) আর Private Key (তুমি রাখো)। তোমার Private Key ছাড়া কেউ server এ ঢুকতে পারবে না।
+
+**English:** A Key Pair is a set of security credentials used to connect to your EC2 instance. It consists of a public key (stored by AWS) and a private key (downloaded by you). Without the private key, no one can access your server.
+
+**Real life:** তালা (Public Key) AWS এর server এ লাগানো আছে — চাবি (Private Key) শুধু তোমার কাছে। চাবি ছাড়া কেউ ঢুকতে পারবে না।
+
+> ⚠️ **Important:** Private Key একবারই download করা যায়। হারিয়ে ফেললে আর পাওয়া যাবে না।
+
+---
+
+## 5. What is Security Group?
+
+**বাংলা:** Security Group হলো তোমার server এর firewall। এইটা ঠিক করে কোন port এ কে access করতে পারবে। যেমন তুমি চাইলে শুধু তোমার IP থেকে server এ ঢোকার permission দিতে পারো।
+
+**English:** A Security Group acts as a virtual firewall for your EC2 instance. It controls inbound (incoming) and outbound (outgoing) traffic by defining rules for which ports and IP addresses are allowed.
+
+| Port | কাজ |
+|------|-----|
+| 22 | SSH দিয়ে server এ login |
+| 80 | HTTP website |
+| 443 | HTTPS website |
+| 3306 | MySQL database |
+
+---
+
+## 6. What is EBS?
+
+**বাংলা:** EBS মানে Elastic Block Store। এইটা হলো তোমার EC2 server এর hard disk। তোমার computer এ যেমন hard disk এ files রাখো — EC2 এর files রাখা হয় EBS এ।
+
+**English:** EBS (Elastic Block Store) is the hard disk for your EC2 instance. It stores your data persistently, meaning even if you stop your EC2 instance, your data remains safe in EBS.
+
+**Real life:** তোমার laptop বন্ধ করলেও files থাকে — EBS এও EC2 বন্ধ করলেও data থাকে।
+
+---
+
+## 7. What is Storage?
+
+**বাংলা:** AWS এ storage মানে data রাখার জায়গা। EC2 এর জন্য দুই ধরনের storage আছে।
+
+**English:** Storage in AWS refers to where your data is kept. For EC2, there are two main types of storage.
+
+| Storage Type | বৈশিষ্ট্য |
+|-------------|-----------|
+| EBS | Permanent — server বন্ধ হলেও data থাকে |
+| Instance Store | Temporary — server বন্ধ হলে data চলে যায় |
+
+---
+
+## 8. What is Elastic IP?
+
+**বাংলা:** সাধারণত EC2 server বন্ধ করে আবার চালু করলে IP address বদলে যায়। Elastic IP হলো একটা fixed IP address যেটা সবসময় same থাকে — server বন্ধ করলেও IP বদলায় না।
+
+**English:** An Elastic IP is a static, fixed public IP address that you can attach to your EC2 instance. Unlike regular IPs that change every time you restart your instance, Elastic IP stays the same permanently.
+
+**Real life:** তোমার phone number যেমন সবসময় same থাকে — Elastic IP ও তেমনি সবসময় same থাকে।
+
+> ⚠️ **Important:** Elastic IP use না করলে charge হয় — তাই use শেষ হলে release করে দাও।
+
+---
+
+## 9. Why is EC2 Service Region Specific?
+
+**বাংলা:** AWS এর data center সারা পৃথিবীতে ছড়িয়ে আছে — America, Europe, Asia সব জায়গায়। Region মানে হলো কোন দেশে বা এলাকায় তোমার server থাকবে। EC2 region specific কারণ — তোমার server physically কোনো একটা জায়গায় থাকতে হবে। Bangladesh এর user দের জন্য Singapore বা Tokyo region এ server রাখলে দ্রুত response পাবে।
+
+**English:** EC2 is region specific because AWS has physical data centers in different geographical locations around the world. Your EC2 instance runs on physical hardware in a specific location. Choosing the right region reduces latency, meets data compliance requirements, and improves performance for your users.
+
+| কারণ | ব্যাখ্যা |
+|------|---------|
+| Speed | Users এর কাছের region = দ্রুত website |
+| Cost | কিছু region অন্যটার চেয়ে সস্তা |
+| Compliance | কিছু দেশে data সেই দেশেই রাখতে হয় |
+
+**Bangladesh এর জন্য best region:**
+- `ap-southeast-1` → Singapore
+- `ap-northeast-1` → Tokyo
+
+---
+
+## Key Takeaways
+
+- EC2 হলো AWS এর virtual server — ভাড়ায় use করা যায়
+- AMI হলো server এর blueprint — OS আর software ready থাকে
+- Instance Type দিয়ে server এর power ঠিক করা হয়
+- Key Pair হলো server এ login করার চাবি — হারানো যাবে না
+- Security Group হলো firewall — কে কোন port এ access করবে ঠিক করে
+- EBS হলো server এর hard disk — permanent storage
+- Elastic IP হলো fixed IP — server restart করলেও বদলায় না
+- Region specific কারণ server physically কোথাও না কোথাও থাকতে হবে
