@@ -125,6 +125,86 @@
 
 ---
 
+---
+
+## Additional EC2 Concepts
+
+### 10. What is the difference between Stop and Terminate?
+
+**বাংলা:**
+- **Stop** → server বন্ধ করা কিন্তু delete হয় না। আবার চালু করা যাবে। EBS data থাকবে।
+- **Terminate** → server চিরতরে delete করা। আর ফিরে পাওয়া যাবে না।
+
+**English:**
+- **Stop** → Shuts down the instance but keeps it. You can restart it later. EBS data is preserved.
+- **Terminate** → Permanently deletes the instance. Cannot be recovered.
+
+> ⚠️ **Important:** Terminate করার আগে সবসময় নিশ্চিত হও — undo করা যাবে না।
+
+---
+
+### 11. What is the difference between Public IP and Private IP?
+
+**বাংলা:**
+- **Public IP** → Internet থেকে access করা যায়। বাইরের মানুষ এই IP দিয়ে তোমার server এ আসবে।
+- **Private IP** → শুধু AWS এর ভেতরে use হয়। Internet থেকে access করা যায় না।
+
+**English:**
+- **Public IP** → Accessible from the internet. Used by external users to reach your server.
+- **Private IP** → Only accessible within AWS network. Not reachable from the internet.
+
+---
+
+### 12. What is User Data in EC2?
+
+**বাংলা:** User Data হলো একটা script যেটা EC2 server প্রথমবার চালু হওয়ার সময় automatically run হয়। যেমন server চালু হলেই automatically Nginx install হবে — আলাদা করে করতে হবে না।
+
+**English:** User Data is a script that runs automatically when an EC2 instance starts for the first time. It's used to automate software installation and configuration without manual intervention.
+
+**Example:**
+```bash
+#!/bin/bash
+yum update -y
+yum install -y httpd
+systemctl start httpd
+```
+
+---
+
+### 13. What is Auto Scaling?
+
+**বাংলা:** Auto Scaling মানে হলো traffic বাড়লে automatically নতুন server যোগ হবে, traffic কমলে server কমে যাবে। যেমন ঈদের দিন তোমার website এ হঠাৎ অনেক মানুষ আসলে auto scaling নিজেই নতুন server চালু করবে।
+
+**English:** Auto Scaling automatically adjusts the number of EC2 instances based on demand. It adds more instances when traffic increases and removes them when traffic decreases, ensuring performance and cost efficiency.
+
+**Real life:** Daraz এ sale এর সময় হঠাৎ লক্ষ মানুষ আসে — Auto Scaling সেই সময় নিজেই server বাড়িয়ে দেয়।
+
+---
+
+### 14. What is Load Balancer?
+
+**বাংলা:** Load Balancer হলো একটা traffic manager। যেমন তোমার ৩টা server আছে — Load Balancer সব users এর request সমানভাবে ৩টা server এ ভাগ করে দেয়। একটা server এ সব চাপ পড়ে না।
+
+**English:** A Load Balancer distributes incoming traffic across multiple EC2 instances to ensure no single server gets overwhelmed. It improves performance, availability, and fault tolerance.
+
+**Real life:** Shopping mall এ ৫টা cashier আছে — manager সমানভাবে সবার কাছে customer পাঠায়। এইটাই Load Balancer।
+
+---
+
+### 15. EC2 Pricing Models
+
+**বাংলা:** EC2 এর ৩টা pricing model আছে।
+
+**English:** EC2 has 3 main pricing models.
+
+| Model | বাংলা | কখন use করবে |
+|-------|-------|--------------|
+| On-Demand | যখন use করবে তখন pay করবে | testing, short-term |
+| Reserved | আগে থেকে বুক করলে সস্তা (১-৩ বছর) | production, long-term |
+| Spot | unused server ভাড়া — অনেক সস্তা কিন্তু যেকোনো সময় বন্ধ হতে পারে | batch processing |
+
+> 💡 **Tip:** শেখার সময় **On-Demand + Free Tier (t2.micro)** use করো — charge হবে না।
+
 ## Key Takeaways
 
 - EC2 হলো AWS এর virtual server — ভাড়ায় use করা যায়
