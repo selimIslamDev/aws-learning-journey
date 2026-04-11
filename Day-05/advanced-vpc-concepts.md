@@ -171,3 +171,50 @@
 Internet থেকে সরাসরি Private Subnet এ ঢোকা যায় না।
 
 **English:** Traffic flow from private subnet to internet:
+
+
+
+Private EC2 Instance
+↓
+NAT Gateway (Public Subnet)
+↓
+Internet Gateway
+↓
+Internet
+
+---
+
+## VPC + EC2 একসাথে কিভাবে কাজ করে
+Internet
+↓
+Internet Gateway
+↓
+Public Subnet → Web Server EC2 (সবাই access করতে পারে)
+↓
+Private Subnet → Database EC2 (শুধু Web Server access করতে পারে)
+
+**Real life example:**
+- Web Server → Public Subnet এ রাখো
+- Database → Private Subnet এ রাখো
+- User → Web Server এ আসে → Web Server → Database থেকে data নেয়
+
+---
+
+## Key Takeaways (16-30)
+
+| Concept | এক কথায় |
+|---------|---------|
+| VPC Endpoint | Internet ছাড়া AWS services access |
+| Transit Gateway | অনেক VPC একসাথে connect |
+| Site-to-Site VPN | Office → AWS encrypted tunnel |
+| Direct Connect | Dedicated physical connection |
+| Flow Logs | Network traffic এর record |
+| Bastion Host | Private subnet এ access এর gateway |
+| NAT Gateway vs Instance | Managed vs Self-managed |
+| Egress-Only IGW | IPv6 এর NAT Gateway |
+| DHCP Options | Network configuration settings |
+| Overlapping CIDR | VPC Peering করা যাবে না |
+| Max Subnets | 200 per VPC |
+| Multi-AZ | High availability এর জন্য |
+| IGW vs NAT GW | Two-way vs One-way |
+| Private → Internet | EC2 → NAT → IGW → Internet |
