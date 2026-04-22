@@ -5,7 +5,7 @@
 
 ---
 
-## 1. What is the difference between AWS CLI v1 and v2
+## 1. What is the difference between AWS CLI v1 and v2?
 
 **বাংলা:** CLI v2 হলো latest version — অনেক নতুন features আছে আর বেশি fast।
 
