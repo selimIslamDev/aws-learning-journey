@@ -4,7 +4,7 @@
 
 ## Topics Covered
 
-### 1. Why AWS?
+### 1. Why AWS
 **বাংলা:** AWS হলো world এর সবচেয়ে বড় cloud provider। মানে সবচেয়ে বেশি company AWS use করে। তাই job market এ AWS জানলে কাজ পাওয়া সহজ। Netflix, Facebook, NASA — সবাই AWS use করে।
 
 **English:** AWS is the #1 cloud provider in the world with 31% market share. Most companies use AWS, so learning it gives you the best job opportunities.
